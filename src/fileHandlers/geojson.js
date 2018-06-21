@@ -1,4 +1,3 @@
-
 function run(name,file){
   var reader = new FileReader();
       reader.onloadend  = function(e){

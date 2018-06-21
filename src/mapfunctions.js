@@ -11,13 +11,12 @@ KORTxyz.func.addLayer = (data) => {
 }
 
 KORTxyz.func.createLayer = (name,geojson) => {
-
 	let layer = {
         'id': name.split('.')[0],
         'source': {
             'type': 'geojson',
             'data': geojson
-        }}
+        }};
 
     let datatype = geojson.features[0].geometry.type.substr(0,5)=="Multi"? geojson.features[0].geometry.type.substr(5) : geojson.features[0].geometry.type;
 
@@ -53,10 +52,10 @@ KORTxyz.func.createLayer = (name,geojson) => {
                     'fill-outline-color': '#'+('00000'+(Math.random()*(1<<24)|0).toString(16)).slice(-6) //[ "step", ["zoom"],"rgba(0, 0, 0, 0)",10,"grey"]
                 }
             }
-        }
+        };
     let layerStyle = styles[datatype.toLowerCase()];
 
-    KORTxyz.func.addLayer({ ...layer, ...layerStyle})
+    KORTxyz.func.addLayer({ ...layer, ...layerStyle});
 
     }
 
