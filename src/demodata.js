@@ -1,6 +1,6 @@
 map.on('load', function () {
 KORTxyz.func.addLayer({
-        'id': 'Polygoner',
+        'id': 'TestPolygoner',
         'type': 'fill',
         'source': {
             'type': 'geojson',
@@ -14,7 +14,7 @@ KORTxyz.func.addLayer({
     })
 
 KORTxyz.func.addLayer({
-        'id': 'Linjer',
+        'id': 'TestLinjer',
         'type': 'line',
         'source': {
             'type': 'geojson',

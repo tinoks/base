@@ -1,21 +1,5 @@
 body { margin:0; padding:0; }
-#map { position:absolute; top:0; bottom:0; width:100%; }
-#nav{
-	height: 36px;
-	float: right;
-    position: relative;
-    z-index: 1;
-}
-
-.material-icons{
-	padding: 12px;
-	cursor:pointer;
-	color:#4f4d56;
-	transition: color 0.4s;
-}
-.material-icons:hover{
-	color:darkgrey;
-}
+#map { position:absolute; top:0; bottom:0; width:100%; transition: width .2s; }
 
 /* scrollbar */
 ::-webkit-scrollbar {

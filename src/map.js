@@ -12,5 +12,6 @@ window.map = new mapboxgl.Map({
     center: [11, 55.8], // starting position [lng, lat]
     zoom: 6 // starting zoom
 });
+
 document.getElementsByClassName("mapboxgl-ctrl-attrib")[0].remove()
 document.getElementsByClassName("mapboxgl-ctrl-logo")[0].remove()

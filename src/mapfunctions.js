@@ -5,18 +5,38 @@ window.KORTxyz = {
 
 
 
-KORTxyz.func.addLayer = (data) => {
-    KORTxyz.layers.push(data);
-    map.addLayer(KORTxyz.layers.filter(e=>e.id==data.id)[0])
+KORTxyz.func.addLayer = (layer) => {
+    KORTxyz.layers.push(layer);
+    map.addLayer(layer)
+    iziToast.show({
+        title: 'Added',
+        message: layer.id,
+        buttons: [
+            ['<button>Zoom to layer</button>', function (instance, toast) {
+                map.fitBounds(turf.bbox(map.getSource(layer.id).serialize().data),{
+            offset: [
+                document.getElementsByTagName("aside")[0].style.width.substr(0,3) == 400 ? -200 : 0,
+                0
+            ]
+        });
+                console.log(map.getSource(layer.id).serialize().data)
+            }, true]
+        ]
+    });
 }
 
-KORTxyz.func.createLayer = (name,geojson) => {
-	let layer = {
-        'id': name.split('.')[0],
-        'source': {
+KORTxyz.func.createLayer = (filename,geojson) => {
+    console.log(geojson)
+    let name = filename.split('.')[0]
+    map.addSource(name, {
             'type': 'geojson',
             'data': geojson
-        }};
+        })
+
+	let layer = {
+            'id': name,
+            'source': name
+        };
 
     let datatype = geojson.features[0].geometry.type.substr(0,5)=="Multi"? geojson.features[0].geometry.type.substr(5) : geojson.features[0].geometry.type;
 

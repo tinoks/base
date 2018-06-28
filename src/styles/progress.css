@@ -1,0 +1,20 @@
+#progress {
+    z-index: 999;
+    height: 2px;
+    position: absolute;
+    background-color: #1da1f2;
+    right: 50%;
+}
+
+#progress2 {
+    z-index: 999;
+    height: 2px;
+    position: absolute;
+    background-color: #1da1f2;
+    left:50%;
+}
+
+@keyframes widthChange {
+    from {width: 50%;}
+    to {width: 0%;}
+}
