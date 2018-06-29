@@ -1,8 +1,18 @@
-#nav{
+.nav{
 	height: 36px;
 	float: right;
     position: relative;
     z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
 }
 
 .material-icons{
@@ -16,16 +26,90 @@
     background-color: #ffffff30;
 }
 
+#searchInput{
+    border: none;
+    background: none;
+    transition: width 0.4s ease-in-out;
+    font-size: 12px;
+}
+#searchInput:focus{
+    border: none;
+    background-color: #ffffff30;
+}
 
-aside {
+
+.sidebar {
     position: absolute;
-    top: 48px;
-    bottom: 0;
-    right: 0;
-    width: 0;
+    left: -300px;
+    width: 300px;
+    height: 100vh;
     z-index: 1;
     background-color: white;
     box-shadow: -1px 0 17px #00000045;
-    transition: width .2s;
+    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     user-select: none;
 }
+.sidebar.show {
+    left: 0;
+}
+
+.listheader{
+    font-size: .88em;
+    font-weight: 700;
+    color: #3c4045;
+    text-transform: uppercase;
+    padding: 10px 15px;
+}
+
+.listitem{
+    font-weight: 100;
+    list-style-type: none;
+    padding: 10px;
+    text-transform: capitalize;
+    cursor: pointer;
+}
+.listitem:hover{
+    font-weight: bold;
+}
+
+#socialmenu {
+    display:none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    height: 344px;
+    right: 12px;
+    top: 36px;
+}
+#socialmenu.show {display: block;}
+
+#alertmenu {
+    display:none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    height: 344px;
+    right: 60px;
+    top: 36px;
+}
+#alertmenu.show {display: block;}
+
+#modulemenu {
+    display:none;
+    position: absolute;
+    background-color: white;
+    min-width: 160px;
+    overflow: auto;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+    height: 344px;
+    right: 108px;
+    top: 36px;
+}
+#modulemenu.show {display: block;}

@@ -8,9 +8,11 @@ import './styles/nav.css';
 import * as turf from '@turf/turf';
 window.turf = turf;
 
+
+import './KORTxyzDiv.js'
 import './map.js';
-import './progress.js';
 import './nav.js';
+import './progress.js';
 import './mapfunctions.js';
 
 //import './demodata.js';

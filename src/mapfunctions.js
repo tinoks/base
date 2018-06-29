@@ -1,11 +1,4 @@
-window.KORTxyz = {
-	layers:[],
-	func: {}
-};
-
-
-
-KORTxyz.func.addLayer = (layer) => {
+KORTxyz.func.addLayer = async (layer) => {
     KORTxyz.layers.push(layer);
     map.addLayer(layer)
     iziToast.show({
@@ -15,7 +8,7 @@ KORTxyz.func.addLayer = (layer) => {
             ['<button>Zoom to layer</button>', function (instance, toast) {
                 map.fitBounds(turf.bbox(map.getSource(layer.id).serialize().data),{
             offset: [
-                document.getElementsByTagName("aside")[0].style.width.substr(0,3) == 400 ? -200 : 0,
+                !document.getElementsByClassName("show")[0]? 0 : -150 ,
                 0
             ]
         });
@@ -25,8 +18,7 @@ KORTxyz.func.addLayer = (layer) => {
     });
 }
 
-KORTxyz.func.createLayer = (filename,geojson) => {
-    console.log(geojson)
+KORTxyz.func.createLayer = async (filename,geojson) => {
     let name = filename.split('.')[0]
     map.addSource(name, {
             'type': 'geojson',
@@ -52,7 +44,7 @@ KORTxyz.func.createLayer = (filename,geojson) => {
                     'circle-color': '#'+(Math.random()*0xFFFFFF<<0).toString(16)
                 }
             },
-            'line': {
+            'linestring': {
                 'type': 'line',
                 "layout": {
                     "line-join": "round",
@@ -74,8 +66,16 @@ KORTxyz.func.createLayer = (filename,geojson) => {
             }
         };
     let layerStyle = styles[datatype.toLowerCase()];
-
     KORTxyz.func.addLayer({ ...layer, ...layerStyle});
+    KORTxyz.func.addtoAside(layer);
 
     }
 
+KORTxyz.func.addtoAside = (layer) => {
+    let li = document.createElement("li");
+        li.appendChild(document.createTextNode(layer.id));
+        li.className = "listitem";
+    document.getElementById("Layers").appendChild(li);
+    KORTxyz.func.openList();
+
+}

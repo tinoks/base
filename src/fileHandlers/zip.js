@@ -7,6 +7,7 @@ function run(name,file){
 var reader = new FileReader();
 
   	reader.onloadend  = function(e){
+  		console.log(e)
        	shpjs(e.target.result)
        		.then(function(shape) {
        			KORTxyz.func.createLayer(shape.fileName,shape);
