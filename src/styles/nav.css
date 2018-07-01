@@ -1,6 +1,5 @@
 .nav{
 	height: 36px;
-	float: right;
     position: relative;
     z-index: 1;
     display: flex;
@@ -9,6 +8,21 @@
 
 .left{
     float: left;
+    left: 0px;
+    transition: 0.3s;
+}
+.left.active{
+    left: 300px;
+}
+@media screen and (max-width: 640px) {
+    .left.active{
+        display: none;
+    }
+}
+@media screen and (max-width: 340px) {
+    .left{
+        display: none;
+    }
 }
 
 .right{
@@ -29,12 +43,12 @@
 #searchInput{
     border: none;
     background: none;
-    transition: width 0.4s ease-in-out;
-    font-size: 12px;
+    font-size: 14px;
 }
 #searchInput:focus{
     border: none;
     background-color: #ffffff30;
+    outline-color: #0000;
 }
 
 
@@ -46,8 +60,9 @@
     z-index: 1;
     background-color: white;
     box-shadow: -1px 0 17px #00000045;
-    transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    transition: left 0.3s;
     user-select: none;
+    overflow-y: auto;
 }
 .sidebar.show {
     left: 0;
@@ -64,12 +79,36 @@
 .listitem{
     font-weight: 100;
     list-style-type: none;
-    padding: 10px;
+    padding: 20px 10px 0 10px;
     text-transform: capitalize;
     cursor: pointer;
+    display: flex;
+    align-items: center;
 }
-.listitem:hover{
+.listitem:hover>p{
     font-weight: bold;
+}
+
+.listitem>p{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin: 0;
+}
+.listitem>i{
+    padding: 0;
+}
+.listmenu{
+    font-size: 12px;
+    text-transform: initial;
+    list-style-type: none;
+    font-weight: lighter;
+    display: none;
+    visibility: hidden;
+    transition: visibility 3s;
+}
+.listmenu>li:hover{
+    font-weight: bold;
+    cursor:pointer;
 }
 
 #socialmenu {

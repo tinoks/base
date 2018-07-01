@@ -16,6 +16,7 @@ KORTxyz.func.addLayer = async (layer) => {
             }, true]
         ]
     });
+    KORTxyz.func.addtoAside(layer);
 }
 
 KORTxyz.func.createLayer = async (filename,geojson) => {
@@ -67,15 +68,50 @@ KORTxyz.func.createLayer = async (filename,geojson) => {
         };
     let layerStyle = styles[datatype.toLowerCase()];
     KORTxyz.func.addLayer({ ...layer, ...layerStyle});
-    KORTxyz.func.addtoAside(layer);
-
     }
 
 KORTxyz.func.addtoAside = (layer) => {
     let li = document.createElement("li");
-        li.appendChild(document.createTextNode(layer.id));
         li.className = "listitem";
+        li.addEventListener("click",(e)=>{
+            console.log(e.toElement.style)
+            if(e.toElement.className == "material-icons md-36" && !e.toElement.style.transform){
+               e.toElement.style.transform = "rotate(90deg)";
+               e.target.parentElement.nextElementSibling.style.display = "block";
+               e.target.parentElement.nextElementSibling.style.visibility = "visible";
+            }else{
+               e.toElement.style.transform = null;
+               e.target.parentElement.nextElementSibling.style.display = "none";  
+               e.target.parentElement.nextElementSibling.style.visibility = "hidden";
+            }
+        })
+        li.id = layer.id;
+
+    let text = document.createElement("p");
+        text.innerText = layer.id;
+        li.appendChild(text);
+
+    let icon = document.createElement('i');
+        icon.className = "material-icons md-36";
+        icon.innerText = "keyboard_arrow_right";
+        icon.style.marginLeft = "auto"
+        li.appendChild(icon);
+
     document.getElementById("Layers").appendChild(li);
+
+    let menu = document.createElement('ul');
+        menu.className = "listmenu";
+    var menuEl = document.createElement('li');
+        menuEl.innerText = "Style";
+        menu.appendChild(menuEl)
+    var menuEl = document.createElement('li');
+        menuEl.innerText = "Table";
+        menu.appendChild(menuEl)
+    var menuEl = document.createElement('li');
+        menuEl.innerText = "Popup";
+        menu.appendChild(menuEl)
+    document.getElementById("Layers").appendChild(menu);
+
     KORTxyz.func.openList();
 
 }

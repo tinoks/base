@@ -4,17 +4,10 @@ body { margin:0; padding:0;
     -webkit-font-smoothing: antialiased !important;
     }
 #map { 
-	position:relative;
-	float:right;
+	position:absolute;
 	height:100vh;
 	width:100%; 
-	transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
-#map.slim {
-	width:calc(100% - 300px);
-	
-}
-
 /* scrollbar */
 ::-webkit-scrollbar {
   width: 6px;

@@ -15,7 +15,7 @@ import './nav.js';
 import './progress.js';
 import './mapfunctions.js';
 
-//import './demodata.js';
+import './demodata.js';
 
 import './draglayer.js';
 

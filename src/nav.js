@@ -1,6 +1,7 @@
 let openList = (e) => {
 	if(e !== undefined || !document.getElementById('listDiv').classList.contains("show")){
 		document.getElementById('listDiv').classList.toggle("show")
+		document.getElementsByClassName('left')[0].classList.toggle("active")
 		document.getElementById('map').classList.toggle("slim")
 	}
 };
@@ -8,6 +9,7 @@ let openList = (e) => {
 let closeList = () => {
 	if(document.getElementById('listDiv').classList.contains("show")){
 		document.getElementById('listDiv').classList.toggle("show")
+		document.getElementsByClassName('left')[0].classList.toggle("active")
 		document.getElementById('map').classList.toggle("slim")
 	}
 };
@@ -82,6 +84,7 @@ map.on('dragend',(e)=>{
 let socialMenu = document.createElement('div');
 	socialMenu.id = "socialmenu";
 	mapDiv.appendChild(socialMenu);
+	document.getElementById('socialmenu').style.width = "24px";
 
 /* -- alertMenu -- */
 let alertMenu = document.createElement('div');
