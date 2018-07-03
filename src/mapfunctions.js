@@ -8,11 +8,10 @@ KORTxyz.func.addLayer = async (layer) => {
             ['<button>Zoom to layer</button>', function (instance, toast) {
                 map.fitBounds(turf.bbox(map.getSource(layer.id).serialize().data),{
             offset: [
-                !document.getElementsByClassName("show")[0]? 0 : -150 ,
+                !document.getElementsByClassName("show")[0]? 0 : 150 ,
                 0
             ]
         });
-                console.log(map.getSource(layer.id).serialize().data)
             }, true]
         ]
     });
@@ -71,9 +70,10 @@ KORTxyz.func.createLayer = async (filename,geojson) => {
     }
 
 KORTxyz.func.addtoAside = (layer) => {
+
     let li = document.createElement("li");
         li.className = "listitem";
-        li.addEventListener("click",(e)=>{
+     /*   li.addEventListener("click",(e)=>{
             console.log(e.toElement.style)
             if(e.toElement.className == "material-icons md-36" && !e.toElement.style.transform){
                e.toElement.style.transform = "rotate(90deg)";
@@ -84,21 +84,36 @@ KORTxyz.func.addtoAside = (layer) => {
                e.target.parentElement.nextElementSibling.style.display = "none";  
                e.target.parentElement.nextElementSibling.style.visibility = "hidden";
             }
-        })
+        })*/
         li.id = layer.id;
 
     let text = document.createElement("p");
         text.innerText = layer.id;
         li.appendChild(text);
 
-    let icon = document.createElement('i');
-        icon.className = "material-icons md-36";
-        icon.innerText = "keyboard_arrow_right";
-        icon.style.marginLeft = "auto"
-        li.appendChild(icon);
+    let iconbrush = document.createElement('i');
+        iconbrush.className = "material-icons md-18";
+        iconbrush.innerText = "brush";
+        iconbrush.addEventListener('click', KORTxyz.func.closeList());
+       // iconbrush.style.fontSize = "18px"
+        li.appendChild(iconbrush);
+
+    let listicon = document.createElement('i');
+        listicon.className = "material-icons md-18";
+        listicon.innerText = "format_list_numbered_rtl";
+        listicon.addEventListener('click', KORTxyz.func.closeList());
+       // listicon.style.fontSize = "18px"
+        li.appendChild(listicon);
+
+    let popupicon = document.createElement('i');
+        popupicon.className = "material-icons md-18";
+        popupicon.innerText = "speaker_notes";
+        popupicon.addEventListener('click', ()=>{ KORTxyz.func.closeList()});
+       // popupicon.style.fontSize = "18px"
+        li.appendChild(popupicon);
 
     document.getElementById("Layers").appendChild(li);
-
+/*
     let menu = document.createElement('ul');
         menu.className = "listmenu";
     var menuEl = document.createElement('li');
@@ -111,7 +126,7 @@ KORTxyz.func.addtoAside = (layer) => {
         menuEl.innerText = "Popup";
         menu.appendChild(menuEl)
     document.getElementById("Layers").appendChild(menu);
-
-    KORTxyz.func.openList();
+*/
+    //KORTxyz.func.openList();
 
 }

@@ -36,7 +36,7 @@ window.setProgress = (e) => {
 	})
 
 
-	map.on("error", function(){
+	map.on("error", function(e){
 	    if(e.dataType=="source" && e.sourceDataType != "metadata"){ 
 	    	currentProgress--
 	    };

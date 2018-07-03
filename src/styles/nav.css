@@ -79,23 +79,31 @@
 .listitem{
     font-weight: 100;
     list-style-type: none;
-    padding: 20px 10px 0 10px;
+    padding: 20px 0 0 10px;
     text-transform: capitalize;
     cursor: pointer;
     display: flex;
     align-items: center;
+     transition: 3s;
 }
-.listitem:hover>p{
+.listitem>p:hover{
     font-weight: bold;
 }
+.listitem>i:hover{
+    color: black;
 
+}
 .listitem>p{
     overflow: hidden;
     text-overflow: ellipsis;
     margin: 0;
+    width: 250px;
 }
 .listitem>i{
     padding: 0;
+    padding-left: 5px;
+    font-size:16px;
+    color:lightgrey;
 }
 .listmenu{
     font-size: 12px;
