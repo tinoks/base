@@ -1,0 +1,41 @@
+.nav{
+	height: 36px;
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+}
+
+.left{
+    float: left;
+    left: 0px;
+    transition: 0.3s;
+}
+.left.active{
+    left: 300px;
+}
+@media screen and (max-width: 640px) {
+    .left.active{
+        display: none;
+    }
+}
+@media screen and (max-width: 340px) {
+    .left{
+        display: none;
+    }
+}
+
+.right{
+    float: right;
+}
+
+.material-icons{
+	padding: 12px;
+	cursor:pointer;
+	color:#4f4d56;
+	transition: color 0.4s;
+	user-select: none;
+}
+.material-icons:hover{
+    background-color: #ffffff30;
+}

@@ -1,0 +1,10 @@
+#searchInput{
+    border: none;
+    background: none;
+    font-size: 14px;
+}
+#searchInput:focus{
+    border: none;
+    background-color: #ffffff30;
+    outline-color: #0000;
+}
