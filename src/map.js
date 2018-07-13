@@ -8,7 +8,7 @@ document.body.appendChild(mapdiv);
 mapboxgl.accessToken = 'pk.eyJ1IjoidGlub2tzIiwiYSI6ImNqaWtrY3NkaTF4Y28zdm43eDByMWZjYTUifQ.1MdnI-NexWOVDdoDO9dnEw';
 window.map = new mapboxgl.Map({
     container: 'map', // container id
-    style: 'mapbox://styles/mapbox/light-v9/', // stylesheet location
+    style: 'https://free.tilehosting.com/styles/basic/style.json?key=qmiUgsEporZLdttoqWLA', // stylesheet location
     center: [11, 55.8], // starting position [lng, lat]
     zoom: 6 // starting zoom
 });

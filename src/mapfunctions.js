@@ -94,22 +94,45 @@ KORTxyz.func.addtoAside = (layer) => {
     let iconbrush = document.createElement('i');
         iconbrush.className = "material-icons md-18";
         iconbrush.innerText = "brush";
-        iconbrush.addEventListener('click', KORTxyz.func.closeList());
-       // iconbrush.style.fontSize = "18px"
+        iconbrush.addEventListener('click', ()=>{ KORTxyz.func.closeList()});
         li.appendChild(iconbrush);
 
     let listicon = document.createElement('i');
         listicon.className = "material-icons md-18";
         listicon.innerText = "format_list_numbered_rtl";
-        listicon.addEventListener('click', KORTxyz.func.closeList());
-       // listicon.style.fontSize = "18px"
+        listicon.addEventListener('click', (e)=>{
+          // first time click;
+          if(!document.getElementsByTagName("tablebar")[0]){
+            
+            window.agGrid = require('ag-grid');
+            
+            require('./tags/tablebar.tag');
+            require('../node_modules/ag-grid/dist/styles/ag-grid.css');
+            require('../node_modules/ag-grid/dist/styles/ag-theme-balham.css');
+            
+            document.getElementById('map').appendChild(document.createElement("tablebar"));
+            riot.mount('tablebar',{"event":e});
+          }
+          else{
+            if(e.target.parentElement.id == KORTxyz.states.table){
+              document.getElementsByTagName("tablebar")[0].classList.toggle("show");
+            }
+            else{
+              if(document.getElementsByTagName("tablebar")[0].classList == "show"){
+                document.getElementsByTagName("tablebar")[0].classList.toggle("show");
+              }
+              setTimeout(()=>{
+                riot.mount('tablebar',{"event":e});
+              },200)
+            }
+          }
+        });
         li.appendChild(listicon);
 
     let popupicon = document.createElement('i');
         popupicon.className = "material-icons md-18";
         popupicon.innerText = "speaker_notes";
         popupicon.addEventListener('click', ()=>{ KORTxyz.func.closeList()});
-       // popupicon.style.fontSize = "18px"
         li.appendChild(popupicon);
 
     document.getElementById("Layers").appendChild(li);

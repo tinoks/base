@@ -7,6 +7,8 @@ import './style.css';
 import * as turf from '@turf/turf';
 window.turf = turf;
 
+import * as riot from 'riot';
+window.riot = riot;
 
 import './KORTxyzDiv.js'
 import './map.js';
@@ -18,5 +20,4 @@ import './mapfunctions.js';
 import './demodata.js';
 
 import './draglayer.js';
-
 

@@ -1,5 +1,8 @@
 window.KORTxyz = {
 	layers:[],
 	func: {},
-	divs: {}
+	divs: {},
+	states: {
+		table:null
+	}
 };
