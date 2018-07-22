@@ -18,7 +18,6 @@ window.EasyFit = require('easy-fit');
      var pos = [];
       data.sessions[0].laps[0].records.forEach((e)=> {
           e.speed = e.speed*3.6;
-          console.warn(e.position_long<90)
           if(Math.abs(e.position_long)<180 && Math.abs(e.position_lat)<90){
             pos.push({
               'type': 'Feature',
@@ -45,7 +44,6 @@ window.EasyFit = require('easy-fit');
   var reader = new FileReader();
       reader.onloadend = function(result) {
         easyFit.parse(result.srcElement.result, function (error, data) {
-          console.log(data);
           addSession(data.activity);
         });
       };

@@ -5,7 +5,6 @@ let openList = (e) => {
 	if(e !== undefined || !document.getElementById('listDiv').classList.contains("show")){
 		document.getElementById('listDiv').classList.toggle("show")
 		document.getElementsByClassName('left')[0].classList.toggle("active")
-		document.getElementById('map').classList.toggle("slim")
 	}
 };
 
@@ -13,7 +12,6 @@ let closeList = () => {
 	if(document.getElementById('listDiv').classList.contains("show")){
 		document.getElementById('listDiv').classList.toggle("show")
 		document.getElementsByClassName('left')[0].classList.toggle("active")
-		document.getElementById('map').classList.toggle("slim")
 	}
 };
 
@@ -37,7 +35,7 @@ map.on('dragend',(e)=>{
 
 
 let listDiv = document.createElement('div');
-	listDiv.className = "sidebar";
+	listDiv.className = "layerList";
 	listDiv.id = "listDiv";
 
 let	listHeader = document.createElement('ul');

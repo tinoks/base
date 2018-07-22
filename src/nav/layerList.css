@@ -1,4 +1,4 @@
-.sidebar {
+.layerList {
     position: absolute;
     left: -300px;
     width: 300px;
@@ -10,7 +10,7 @@
     user-select: none;
     overflow-y: auto;
 }
-.sidebar.show {
+.layerList.show {
     left: 0;
 }
 
@@ -36,7 +36,7 @@
 }
 .listitem>i:hover{
     color: black;
-
+    background-color: #00000005;
 }
 .listitem>p{
     overflow: hidden;

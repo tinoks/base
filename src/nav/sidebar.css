@@ -1,0 +1,16 @@
+.sidebar {
+    position: absolute;
+    right:  0;
+    margin-top:40px;
+    width: 0;
+    height: calc( 100vh - 40px);
+    z-index: 1;
+    background-color: white;
+    box-shadow: -1px 0 17px #00000045;
+    transition: 0.2s;
+    user-select: none;
+    overflow-y: auto;
+}
+.sidebar.show {
+    width: 300px;
+}

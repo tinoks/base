@@ -3,6 +3,9 @@ window.KORTxyz = {
 	func: {},
 	divs: {},
 	states: {
-		table:null
+		table:null,
+		sidebar:{
+			layer:null
+		}
 	}
 };

@@ -1,0 +1,94 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Spectrum (modified)</title>
+	<style>
+		.bar{
+			padding:4px;
+		    position: absolute;
+			z-index: 1;
+		}
+		.marker{
+			position: relative;
+			z-index: 2;
+			pointer-events: none;
+			border: solid;
+			width: 4px;
+			height: 10px;
+			margin-top:2px;
+			box-shadow: 0 0 3px 1px;
+			border-color: white;
+			background-color: red;
+			border-width: 2px;
+			cursor:pointer;
+		}
+	</style>
+<script src="https://unpkg.com/colorsys@1.0.11/colorsys.js"></script>
+
+  </head>
+  <body>
+	<input id="textInput" type="text" value="rgb(0,99,255)"></input><br>
+    <canvas class="bar" id="colorbar" width="300" height="10"></canvas>
+	<div class="marker" id="colormarker"></div>
+
+	<canvas class="background" id="chess" width="200" height="200"></canvas>
+    <script type="text/javascript">
+      var colorbar = document.getElementById('colorbar'),
+          ctx = colorbar.getContext('2d'),
+          grd;
+      function numtorbg(input) {
+		var num = Math.round(0xffffff * input);
+		var r = num >> 16;
+		var g = num >> 8 & 255;
+		var b = num & 255;
+		return 'rgb(' + r + ', ' + g + ', ' + b + ')';
+	}
+		var colorsys = require('colorsys')
+
+      // Create gradient
+		  grd = ctx.createLinearGradient(0,0, 300, 10);
+		  // Add colors
+		  grd.addColorStop(0.000, 'hsl(0, 	100%, 	50%)');
+													//
+		  grd.addColorStop(0.150, 'hsl(60, 	100%, 	50%)');
+										//
+		  grd.addColorStop(0.330, 'hsl(120, 	100%, 	50%)');
+											  //
+		  grd.addColorStop(0.490, 'hsl(180, 	100%, 	50%)');
+													//
+		  grd.addColorStop(0.670, 'hsl(240, 	100%, 	50%)');
+										 //
+		  grd.addColorStop(0.840, 'hsl(300, 	100%, 	50%)');
+											//
+		  grd.addColorStop(1.000, 'hsl(360, 	100%, 	50%)');
+		  // Fill with gradient
+		  ctx.fillStyle = grd;
+		  ctx.fillRect(0,0, 300, 10);
+		  
+		colorbar.addEventListener('mousemove', (event) => {
+			var x = event.layerX;
+			var y = event.layerY;
+			var colorCtx = ctx.getImageData(x-4,y-4,1,1).data;
+			var color = `rgb(${colorCtx[0]},${colorCtx[1]},${colorCtx[2]})`
+			var box = document.getElementById('textInput');
+			box.style.backgroundColor = color;
+			box.value = color;
+			var marker = document.getElementById('colormarker');
+				marker.style.backgroundColor=color;
+				marker.style.marginLeft=x-2
+		});
+		
+      var chess = document.getElementById('chess'),
+          chessctx = chess.getContext('2d');
+		  
+	for (var i = 0; i < 80; i++) {
+		for (var j = 0; j < 8; j++) {
+		chessctx.beginPath();
+		chessctx.fillStyle = ["white", "lightgrey"][(i + j) % 2];
+		chessctx.fillRect(j * 4, i * 4, 4, 4);
+		chessctx.closePath();
+		}
+	}
+    </script>
+  </body>
+</html>

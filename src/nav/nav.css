@@ -5,7 +5,7 @@
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
     height: 344px;
     right: 12px;
     top: 36px;
@@ -19,7 +19,7 @@
     min-width: 160px;
     overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
     height: 344px;
     right: 60px;
     top: 36px;
@@ -31,11 +31,23 @@
     position: absolute;
     background-color: white;
     min-width: 160px;
-    overflow: auto;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    z-index: 2;
     height: 344px;
     right: 108px;
-    top: 36px;
+    top: 40px;
+}
+#modulemenu:after {
+    bottom: 100%;
+    right: 0px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+    border-color: rgba(136, 183, 213, 0);
+    border-bottom-color: white;
+    border-width: 12px;
 }
 #modulemenu.show {display: block;}

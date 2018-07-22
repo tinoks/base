@@ -20,7 +20,8 @@
     "material-design-icons": "^3.0.1",
     "npm": "^6.1.0",
     "riot": "^3.10.3",
-    "shpjs": "^3.4.2"
+    "shpjs": "^3.4.2",
+    "tinycolor2": "^1.4.1"
   },
   "devDependencies": {
     "clean-webpack-plugin": "^0.1.19",

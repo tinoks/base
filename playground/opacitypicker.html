@@ -1,0 +1,62 @@
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Spectrum (modified)</title>
+	<style>
+		.bar{
+			padding:2px;
+		    position: absolute;
+			z-index: 1;
+		}
+		.marker{
+			position: relative;
+			z-index: 2;
+			pointer-events: none;
+			border: solid;
+			width: 6px;
+			height: 20px;
+			box-shadow: 0 0 3px 1px;
+			border-color: white;
+			background-color: red;
+			border-width: 2px;
+			cursor:pointer;
+		}
+	</style>
+  </head>
+  <body>
+	<input id="textInput" type="text"></input><br>
+    <canvas class="bar" id="colorbar" width="300" height="20"></canvas>
+	<div class="marker" id="colormarker"></div>
+
+    <script type="text/javascript">
+      var colorbar = document.getElementById('colorbar'),
+          ctx = colorbar.getContext('2d'),
+          grd;
+      
+      // Create gradient
+		  grd = ctx.createLinearGradient(0,0, 300, 20);
+		  
+		  // Add colors
+		  grd.addColorStop(0.000, 'rgba(0, 0, 0, 1.000)');
+		  grd.addColorStop(1.000, 'rgba(0, 0, 0, 0.000)');
+      
+		  // Fill with gradient
+		  ctx.fillStyle = grd;
+		  ctx.fillRect(0,0, 300, 20);
+		  
+		colorbar.addEventListener('click', (event) => {
+			var x = event.layerX;
+			var y = event.layerY;
+			var colorCtx = ctx.getImageData(x-4,y-4,1,1).data;
+			var color = `rgba(${colorCtx[0]},${colorCtx[1]},${colorCtx[2]},0)`
+			var box = document.getElementById('textInput');
+				box.value = colorCtx[3]/255
+			var marker = document.getElementById('colormarker');
+				marker.style.backgroundColor=color;
+				marker.style.marginLeft=x-2
+		});
+
+	  
+    </script>
+  </body>
+</html>

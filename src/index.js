@@ -10,12 +10,18 @@ window.turf = turf;
 import * as riot from 'riot';
 window.riot = riot;
 
+//tinyColor
+import * as tinycolor from 'tinycolor2';
+window.tinycolor = tinycolor;
+
+
 import './KORTxyzDiv.js'
 import './map.js';
 import './nav/nav.js';
 
 import './progress.js';
-import './mapfunctions.js';
+import './functions/mapfunctions.js';
+import './functions/layerListfunctions.js';
 
 import './demodata.js';
 
