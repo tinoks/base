@@ -40,6 +40,7 @@ KORTxyz.func.addtoAside = (layer) => {
 }
 
 function iconbrushOpen(e){
+
   if(!document.getElementsByTagName("styles-bar")[0]){
     require('.././tags/stylesbar.tag');
     require('.././tags/colorpicker.tag');
@@ -49,8 +50,15 @@ function iconbrushOpen(e){
   if(KORTxyz.states.sidebar.layer == null){
     KORTxyz.states.sidebar = {"type":"style","layer":e.target.parentElement.id};
     e.target.style.color = "black";
+    const layer = map.getLayer(KORTxyz.states.sidebar.layer).serialize().paint;
+    let paint = {};
+    for(let prop in layer) {
+      if(prop != "circle-pitch-alignment"){
+        paint[prop] = typeof layer[prop] == "object"?  JSON.stringify(layer[prop]) : layer[prop];
+      }
+    }
     riot.mount('styles-bar',{
-      "layer": map.getLayer(KORTxyz.states.sidebar.layer).serialize(),
+      "paint": paint,
       "data": map.getSource(KORTxyz.states.sidebar.layer).serialize().data
     });
     document.getElementsByClassName("sidebar")[0].classList.toggle("show")
@@ -72,8 +80,15 @@ function iconbrushOpen(e){
         e.target.style.color = "black";
         KORTxyz.states.sidebar = {"type":"style","layer":e.target.parentElement.id};
         document.getElementsByClassName("sidebar")[0].classList.toggle("show")
+        const layer = map.getLayer(KORTxyz.states.sidebar.layer).serialize().paint;
+        let paint = {};
+        for(let prop in layer) {
+          if(prop != "circle-pitch-alignment"){
+            paint[prop] = typeof layer[prop] == "object"?  JSON.stringify(layer[prop]) : layer[prop];
+          }
+        }
         riot.mount('styles-bar',{
-          "layer": map.getLayer(KORTxyz.states.sidebar.layer).serialize(),
+          "paint": paint,
           "data": map.getSource(KORTxyz.states.sidebar.layer).serialize().data
         });
       },200

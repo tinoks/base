@@ -82,14 +82,6 @@
 
 window.colorpicker = {color:{}};
   this.on('mount', () => {
-  /*  const div = this.opts.target;
-    let color = tinycolor(div.value).toHsv();
-			setColor(color)
-			setHueMarker(color.h/360*150);
-			setOpacityMarker(150-color.a*150);
-			//setDiv(color);
-		
-*/
 		document.querySelector("#box").onclick = (e) =>{
 			KORTxyz.states.colorpicker.focus();
 			colorpicker.color.s = e.layerX/150*100;
@@ -116,11 +108,12 @@ window.colorpicker = {color:{}};
   })
 
 	colorpicker.initColorpicker = (color) => {
-			colorpicker.color = tinycolor(color).toHsv();
-			colorpicker.setColor(colorpicker.color);
-			colorpicker.setHueMarker(colorpicker.color.h/360*150);
-			colorpicker.setOpacityMarker(150-colorpicker.color.a*150);
-			colorpicker.setDiv(colorpicker.color);
+		colorpicker.color = tinycolor(color).toHsv();
+		colorpicker.setColor(colorpicker.color);
+		colorpicker.setBoxCircle(colorpicker.color.s*150,150-colorpicker.color.v*150)
+		colorpicker.setHueMarker(colorpicker.color.h/360*150);
+		colorpicker.setOpacityMarker(150-colorpicker.color.a*150);
+		colorpicker.setDiv(colorpicker.color);
 	}
 
 	colorpicker.setColor = (color)=> {

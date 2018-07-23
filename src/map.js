@@ -15,3 +15,8 @@ window.map = new mapboxgl.Map({
 
 document.getElementsByClassName("mapboxgl-ctrl-attrib")[0].remove()
 document.getElementsByClassName("mapboxgl-ctrl-logo")[0].remove()
+
+map.on('click',()=>{
+	KORTxyz.func.closeList();
+	KORTxyz.func.closeSidebar();
+})

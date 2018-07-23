@@ -66,10 +66,9 @@ KORTxyz.func.createLayer = async (filename,geojson) => {
                 'layout': {},
                 'paint': {
                     'fill-color':tinycolor.random().toRgbString(),
-                    'fill-outline-color': "black"
                 }
             }
         };
     let layerStyle = styles[datatype.toLowerCase()];
     KORTxyz.func.addLayer({ ...layer, ...layerStyle});
-    }
+}

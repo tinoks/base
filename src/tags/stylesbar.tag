@@ -13,7 +13,7 @@
   <!-- layout -->
 
 <div class="container">
-  <div each="{ name, i in opts.layer.paint }">
+  <div each="{ name, i in opts.paint }">
 		<sub>{ i }</sub><br>
   	<input type="text" id={i} value={name} 
   		onfocusout={onfocusout} onfocus={onfocus} 
@@ -24,7 +24,6 @@
   <!-- logic -->
 <script>
   let unlinkColorTimeout;
-
 	this.onchange = (e) => {
 		let value
 		try {
@@ -55,14 +54,10 @@
   }
 
  function linkColor(e){
- 	console.log(
-    opts.data,
-    Object.entries(
-      opts.data.features[0].properties
-    ).map(e=>[e[0],typeof e[1]])
-)
 	const colordiv = document.querySelector("color-picker");
-				colorpicker.initColorpicker(e.target.value)
+        if(tinycolor(e.target.value).isValid()){
+          colorpicker.initColorpicker(e.target.value)
+        }
 				colordiv.style.display = "flex";
 				colordiv.style.top = 22+ e.target.offsetTop + "px";
 				colordiv.style.left = 3+ e.target.offsetLeft + "px";
