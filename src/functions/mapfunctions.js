@@ -45,7 +45,11 @@ KORTxyz.func.createLayer = async (filename,geojson) => {
                         'stops': [[12, 2], [22, 180]]
                     },
                     'circle-color': tinycolor.random().toRgbString(),
-                    'circle-blur':0
+                    'circle-blur':0,
+                    'circle-opacity':1,
+                    'circle-stroke-color': "white",
+                    'circle-stroke-width':0,
+                    'circle-stroke-opacity':1
 
                 }
             },
@@ -58,7 +62,8 @@ KORTxyz.func.createLayer = async (filename,geojson) => {
                 "paint": {
                     "line-color": tinycolor.random().toRgbString(),
                     "line-width": 4,
-                    "line-blur":0
+                    "line-blur":0,
+                    'line-opacity':1
                 }
             },
             'polygon': {
@@ -66,6 +71,8 @@ KORTxyz.func.createLayer = async (filename,geojson) => {
                 'layout': {},
                 'paint': {
                     'fill-color':tinycolor.random().toRgbString(),
+                    'fill-outline-color': 'lightgrey',
+                    'fill-opacity':1
                 }
             }
         };
